@@ -14,7 +14,8 @@ import java.util.ArrayList;
  * @author Luqman A. Siswanto
  */
 public class Solver {
-  private static String delimiter = "[\\s,;()]+";
+  // "[\\s,;()]+"
+  private static String delimiter = ",\\s*";
   private static final int tweetCount = 100;
   
   private boolean usingKmp;
@@ -66,12 +67,13 @@ public class Solver {
   private void crawlingTwitter() {
     TwitterConnector twit = new TwitterConnector();
     tweets = twit.searchKeyword(tweetCount, toSearch);
+    /*
     for (int j = 0; j < tweetCount; j++) {
-//        System.out.println("@" + tweets.get(j).getUser().getScreenName() + " - " + tweets.get(j).getText());
-//        String url = "https://twitter.com/" + tweets.get(j).getUser().getScreenName() + "/status/" + tweets.get(j).getId();
-//        System.out.println(url);
+      System.out.println("@" + tweets.get(j).getUser().getScreenName() + " - " + tweets.get(j).getText());
+      String url = "https://twitter.com/" + tweets.get(j).getUser().getScreenName() + "/status/" + tweets.get(j).getId();
+      System.out.println(url);
     }
-//    System.out.println();
+    System.out.println(); */
     
   }
   

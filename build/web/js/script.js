@@ -51,7 +51,7 @@ $(document).ready(function(){
       $("#keyword2").attr("placeholder", "E.g. smartphone, Apple, Samsung");
       $("#keyword3").attr("placeholder", "E.g. bandwidth, speed, business");
     }
-    $("#topic").find("h1").text("Topic " + category);
+    $("#topic").text("Topic " + category);
     $("#keyword1-label").text("Keyword " + printTab[0]);
     $("#keyword2-label").text("Keyword " + printTab[1]);
     $("#keyword3-label").text("Keyword " + printTab[2]);

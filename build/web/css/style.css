@@ -55,14 +55,18 @@ ul.horizontal-list li {
   width: 500px;
   margin: 0 auto;
 }
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
 
 // Page Topic
 .insert-keyword-form {
   display: inline-block;
-  background-color: yellow;
 }
 #topic-choice {
-  margin: 0 400px;
+  margin: 100px 400px 0;
 }
 #category {
   margin: 50px 400px;
@@ -89,4 +93,7 @@ ul.horizontal-list li {
 .result-tweet {
   background-color: greenyellow;
   text-align: justify;
+}
+#select-algorithm {
+  width: 40%;
 }
