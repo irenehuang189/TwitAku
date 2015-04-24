@@ -43,12 +43,7 @@
         </ul>
       </div>
     </nav>
-
-    <!-- Pilihan Topic -->
-    <!--<div id="topic-choice">
-      
-    </div>-->
-
+    
 <!--<div id="choose-topic-button">
       
     </div>-->
@@ -57,7 +52,10 @@
     <div class="insert-keyword-form">
       <form autocomplete="on" action="result.jsp">
         <!-- Topik -->
-        <span id="topic-choice">
+        <div id="topic-choice">
+          <label id="topic-choice-label" for="topic-choice">
+            Choose your topic
+          </label>
           <div class="radio">
           <label>
             <input id="policy-and-law" name="topic-choice" type="radio" value="Policy and Law" checked>Policy and Law
@@ -78,10 +76,10 @@
               <input id="technology" name="topic-choice" type="radio" value="Technology">Technology
             </label>
           </div>
-        </span>
+        </div>
         
         <!-- Kategori dan keyword -->
-        <span id="category">
+        <div id="category">
           <h1 id="topic">
             <!-- Diisi melalui JavaScript -->
           </h1><br>
@@ -96,21 +94,21 @@
             <label id="keyword1-label" for="keyword1">
               <!-- Diisi melalui JavaScript -->
             </label>
-            <input type="text" class="form-control" name="keyword1" id="keyword1" placeholder="Ex. World Gas Emition">
+            <input type="text" class="form-control" name="keyword1" id="keyword1" placeholder="Ex. World Gas Emition" required>
           </div>
           <!-- Keyword 2 -->
           <div class="form-group">
             <label id="keyword2-label" for="keyword2">
               <!-- Diisi melalui JavaScript -->
             </label>
-            <input type="text" class="form-control" name="keyword2" id="keyword2" placeholder="Ex. Presiden Jokowi">
+            <input type="text" class="form-control" name="keyword2" id="keyword2" placeholder="Ex. Presiden Jokowi" required>
           </div>
           <!-- Keyword 3 -->
           <div class="form-group">
             <label id="keyword3-label" for="keyword3">
               <!-- Diisi melalui JavaScript -->
             </label>
-            <input type="text" class="form-control" name="keyword3" id="keyword3" placeholder="Ex. Bupati"><br>
+            <input type="text" class="form-control" name="keyword3" id="keyword3" placeholder="Ex. Bupati" required><br>
           </div>
           <p class="help-block">
             Keyword are case-sensitive, seperated by ",".
@@ -118,12 +116,12 @@
           <button class="btn btn-default" id="choose-topic-button" type="submit">
             <img src="img/button-search.png">
           </button>
-        </span>
+        </div>
       </form>
     </div>
 
     <!-- JavaScript -->
-    <script src="js/jquery/jquery.js"></script>
+    <script src="js/jquery/jquery-1.11.2.js"></script>
     <script src="twitter-bootstrap/js/bootstrap.js"></script>
     <script src="js/script.js"></script>
   </body>

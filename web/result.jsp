@@ -16,6 +16,10 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>TwitAku - Result</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <%
@@ -46,9 +50,6 @@
       } else {
         category = categoryTechnology;
       }
-      //category.
-      //category[category.length] = "Unknown";
-      
     %>
     Topic: <%= topic %><br>
     Twitter search: <%= toSearch %><br>
@@ -62,15 +63,36 @@
 
     // Output berupa list of categories
     for (Category cat : categories) {
-      out.println("***** " + cat.getCategory() + " *****<br>");
+      out.println(
+              "<div class='result-text'>" + 
+                "<span class='result-category'>" + 
+                      cat.getCategory() +
+                "</span>"
+      );
+      
       ArrayList<Status> l = cat.getTweets();
       for (Status status : l) {
-        out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
-        String url = "https://twitter.com/" + status.getUser().getScreenName() + "/status/" + status.getId() + "<br>";
-        out.println(url);
+        String userUrl = "https://twitter.com/" + status.getUser().getScreenName();
+        String statusUrl = userUrl + "/status/" + status.getId();
+        out.println(
+                "<a href='" + userUrl + "'>" +
+                  "<div class='result-username'>" +
+                    "@" + status.getUser().getScreenName() + 
+                  "</div>" +
+                "</a>" +
+                "<a href='" + statusUrl + "'>" +
+                  "<div class='result-tweet'>" +
+                    status.getText() +
+                  "</div>" +
+                "</a>"
+        );
       }
-      out.println("<br>");
+      out.println("</div>");
     }
     %>
+    <!-- JavaScript -->
+    <script src="js/jquery/jquery-1.11.2.js"></script>
+    <script src="twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>

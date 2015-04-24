@@ -8,52 +8,7 @@ and open the template in the editor.
     Author     : User
 */
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-body {
-  line-height: 1;
-  background-size: 1400px;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after { 
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-/* Costum */
+// Page index
 .center {
   text-align: center;
 }
@@ -101,18 +56,37 @@ ul.horizontal-list li {
   margin: 0 auto;
 }
 
-/* Page Topic */
-div#topic-choice {
-  margin: 70px 70px 0 400px;
-  display: inline-block;
-  vertical-align: middle;
-}
-div.radio {
-  margin-bottom: 20px;
-}
-div#choose-topic-button {
-  display: inline;
-}
+// Page Topic
 .insert-keyword-form {
-  margin: 0 1000px;
+  display: inline-block;
+  background-color: yellow;
+}
+#topic-choice {
+  margin: 0 400px;
+}
+#category {
+  margin: 50px 400px;
+}
+
+// Page Result
+.result-text {
+  overflow: auto;
+  padding: 30px 500px;
+  background-color: yellow;
+}
+.result-category {
+  background-color: royalblue;
+  text-align: center;
+  text-decoration: blink;
+}
+.result-content {
+  background-color: orange;
+}
+.result-username {
+  background-color: yellow;
+  text-shadow: 10;
+}
+.result-tweet {
+  background-color: greenyellow;
+  text-align: justify;
 }
