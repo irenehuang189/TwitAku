@@ -89,9 +89,9 @@ public class Solver {
           if(found) break;
           int ind = -1;
           if(usingKmp) {
-            ind = algo.matchKmp(categories.get(i).getKey(j), tweets.get(k).getText());
+            ind = algo.exactMatchKmp(categories.get(i).getKey(j), tweets.get(k).getText());
           } else {
-            ind = algo.matchBoyerMoore(categories.get(i).getKey(j), tweets.get(k).getText());
+            ind = algo.exactMatchBoyerMoore(categories.get(i).getKey(j), tweets.get(k).getText());
           }
           
           if (ind != -1) {
