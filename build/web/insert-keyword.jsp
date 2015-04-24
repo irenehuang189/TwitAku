@@ -17,7 +17,7 @@
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-default" id="header" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li>
@@ -82,7 +82,7 @@
         <div id="category">
           <h1 id="topic">
             <!-- Diisi melalui JavaScript -->
-          </h1><br>
+          </h1>
           <div class="form-group">
             <label id="twitter-search-label" for="twitter-search">
               Twitter Search
@@ -110,8 +110,15 @@
             </label>
             <input type="text" class="form-control" name="keyword3" id="keyword3" placeholder="Ex. Bupati" required><br>
           </div>
+          <label for="select-algorithm">
+            Algorithm
+          </label>
+          <select class="form-control" name="select-algorithm" id="select-algorithm">
+            <option value="KMP">Knuth-Morris-Pratt (KMP)</option>
+            <option value="BM">Boyer-Moore</option>
+          </select>
           <p class="help-block">
-            Keyword are case-sensitive, seperated by ",".
+            Keyword are case-sensitive, seperated by ", ".
           </p>
           <button class="btn btn-default" id="choose-topic-button" type="submit">
             <img src="img/button-search.png">

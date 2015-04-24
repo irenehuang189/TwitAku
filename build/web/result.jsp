@@ -22,6 +22,33 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-default"  role="navigation">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="index.html">
+              <img src="img/logo-header.png" alt="Logo" style="height:35px">
+            </a>    
+          </li>
+          <li>
+            <a href="index.html">
+              <img src="img/header-home.png">
+            </a>
+          </li>
+          <li>
+            <a href="index.html#index-help">
+              <img src="img/header-help.png">
+            </a>
+          </li>
+          <li> 
+            <a href="index.html#index-about">
+              <img src="img/header-about.png">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <%
       // Daftar kategori untuk setiap topik
       String[] categoryPolicyAndLaw = {"International", "National", "Regional", "Unknown"};
@@ -36,14 +63,14 @@
         request.getParameter("keyword2"),
         request.getParameter("keyword3")
       };
+      //String algorithm = request.getParameter("select-algorithm");
+      // Penentuan algoritma
       boolean usingKmp = true; // Algoritma yang digunakan
       // Penentuan kategori sesuai topik
       String[] category = new String[5];
       if (topic.equals("Policy and Law")) {
-        //category.clone(categoryPolicyAndLaw);
         category = categoryPolicyAndLaw;
       } else if (topic.equals("Entertainment")) {
-      
         category = categoryEntertainment;
       } else if (topic.equals("Travelling")) {
         category = categoryTravelling;
@@ -66,7 +93,8 @@
       out.println(
               "<div class='result-text'>" + 
                 "<span class='result-category'>" + 
-                      cat.getCategory() +
+                    cat.getCategory() + "<br>" +
+                    cat.getTweets().size() + " tweets found<br>" +
                 "</span>"
       );
       
