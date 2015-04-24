@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * @author Luqman A. Siswanto
  */
 public class Solver {
-  // "[\\s,;()]+"
   private static String delimiter = ",\\s*";
   private static final int tweetCount = 100;
   

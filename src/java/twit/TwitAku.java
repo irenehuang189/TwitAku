@@ -18,11 +18,11 @@ public class TwitAku {
     // keywords dan knama kategori yang perlu ditambah
     // masukin ke sini.
     boolean usingKmp = false;
-    String toSearch = "hello";
+    String toSearch = "#hiburan";
     String[] keywords = {
-      "beng, mims, indonesia merdeka,,",
-      "name,papa,berandal,do",
-      "world,morning,love"
+      "the avengers,captain america",
+      "asdf,,,,,,        fdfd, dfsdf",
+      "tai tai tai"
     };
     String[] kategori = {
       "bola",
