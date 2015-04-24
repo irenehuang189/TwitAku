@@ -13,6 +13,7 @@ import java.util.Arrays;
  */
 public class Algorithm {
   private final int ALPHABET_SIZE = 26;
+  private final int CHAR_SIZE = 256;
   
   /**
    * Default konstruktor
@@ -50,17 +51,86 @@ public class Algorithm {
    * @return Matriks kemunculan terakhir
    */
   public int[][] computeBoyerMoore(String s) {
-    int[][] b = new int[s.length()][ALPHABET_SIZE];
+    int[][] b = new int[s.length()][CHAR_SIZE];
     for(int i = 0; i < s.length(); i++) {
       Arrays.fill(b[i], -1);
     }
     for(int i = 0; i < s.length(); i++) {
-      for(int j = 0; j < ALPHABET_SIZE; j++) {
+      for(int j = 0; j < CHAR_SIZE; j++) {
         if(i > 0) b[i][j] = b[i - 1][j];
       }
-      b[i][s.charAt(i) - 'a'] = i;
+      b[i][s.charAt(i)] = i;
     }
     return b;
+  }
+  
+  public boolean exactCheck(String text, int i, int patternSize) {
+    if(i + patternSize < text.length()) {
+      if(Character.isLetterOrDigit(text.charAt(i + patternSize))) {
+        return false;
+      }
+    }
+    if(1 <= i && Character.isLetterOrDigit(text.charAt(i - 1))) {
+      return false;
+    }
+    return true;
+  }
+  
+  /**
+   * KMP mencari indeks secara exact (gak substring)
+   * @param pattern yang mau dicocokkan
+   * @param text teks sumber yg akan dicocokkan
+   * @return -1 bisa pattern tidak ditemukan, indeks awal tempat pattern berada
+   */
+  public int exactMatchKmp(String pattern, String text) {
+    pattern = pattern.toLowerCase();
+    text = text.toLowerCase();
+    int[] b = computeKMP(pattern);
+    int j = 0;
+    for(int i = 0; i < text.length();) {
+      if(pattern.charAt(j) == text.charAt(i)) {
+        i++; j++;
+      } else if(j > 0) {
+        j = b[j - 1];
+      } else {
+        i++;
+      }
+      if(j == pattern.length()) {
+        if(exactCheck(text, i - pattern.length(), pattern.length())) {
+          return i - pattern.length();
+        }
+        j = b[j - 1];
+      }
+    }
+    return -1;
+  }
+  
+  public int exactMatchBoyerMoore(String pattern, String text) {
+    pattern = pattern.toLowerCase();
+    text = text.toLowerCase();
+    int[][] b = computeBoyerMoore(pattern);
+    int j = pattern.length() - 1;
+    for(int i = pattern.length() - 1; i < text.length();) {
+      if(pattern.charAt(j) == text.charAt(i)) {
+        i--; j--;
+        if(j == -1) {
+          if(exactCheck(text, i + 1, pattern.length())) {
+            return i + 1;
+          }
+          i += pattern.length();
+          j += pattern.length();
+        }
+      } else {
+        int c = text.charAt(i);
+        if(0 <= c && c < CHAR_SIZE && b[j][c] != -1) {
+          i += pattern.length() - 1 - b[j][c];
+        } else {
+          i += pattern.length();
+        }
+        j = pattern.length() - 1;
+      }
+    }
+    return -1;
   }
   
   /**
@@ -107,8 +177,9 @@ public class Algorithm {
           return i + 1;
         }
       } else {
-        if(b[j][text.charAt(i) - 'a'] != -1) {
-          i += pattern.length() - 1 - b[j][text.charAt(i) - 'a'];
+        int c = text.charAt(i);
+        if(0 <= c && c < CHAR_SIZE && b[j][c] != -1) {
+          i += pattern.length() - 1 - b[j][c];
         } else {
           i += pattern.length();
         }

@@ -17,10 +17,10 @@ public class TwitAku {
   public static void main(String[] args) {
     // keywords dan knama kategori yang perlu ditambah
     // masukin ke sini.
-    boolean usingKmp = true;
+    boolean usingKmp = false;
     String toSearch = "hello";
     String[] keywords = {
-      "wednesday,cinta,nak,hey,cinta,mama",
+      "beng, mims, indonesia merdeka,,",
       "name,papa,berandal,do",
       "world,morning,love"
     };
@@ -36,6 +36,9 @@ public class TwitAku {
     // Output berupa list of categories
     for (Category cat : categories) {
       System.out.println("***** " + cat.getCategory() + " *****");
+      for(String keyword : cat.getKeys()) {
+        System.out.println(keyword);
+      }
       ArrayList<Status> l = cat.getTweets();
       for (Status status : l) {
         System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());

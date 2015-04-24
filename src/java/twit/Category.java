@@ -35,6 +35,9 @@ public class Category {
     return category;
   }
   
+  public ArrayList<String> getKeys() {
+    return keys;
+  }
   public void addKey(String key) {
     keys.add(key);
   }
