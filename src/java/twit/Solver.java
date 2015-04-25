@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Solver {
   private static String delimiter = ",\\s*";
   private static final int tweetCount = 100;
+  private static final String[] prefix = {"di", "at", "on", "in"};
   
   private boolean usingKmp;
   private String toSearch;
@@ -39,6 +40,7 @@ public class Solver {
     crawlingTwitter();
     categorize();
     entry();
+    generateCandidatePlaces();
   }
   
   /**
@@ -121,6 +123,49 @@ public class Solver {
         indexCategory = categories.size() - 1;
       }
       categories.get(indexCategory).addTweets(tweets.get(i));
+    }
+  }
+  
+  private void generateCandidatePlaces() {
+    for(Category cat : categories) {
+      for(Status tweet : cat.getTweets()) {
+        ArrayList<String> candidatePlaces = new ArrayList<String>();
+        String text = tweet.getText();
+        text = text.replaceAll("[^A-Za-z0-9 ]", " ");
+        text = text.replaceAll("\\s+", " ").trim();
+        String[] words = text.split(" ");
+        ArrayList<Integer> pos = new ArrayList<Integer>();
+        for(int i = 0; i < words.length; i++) {
+          boolean equal = false;
+          for(int j = 0; j < prefix.length && !equal; j++) {
+            if(words[i].equals(prefix[j])) {
+              pos.add(i);
+              equal = true;
+            }
+          }
+        }
+        for(int i = 0; i < pos.size(); i++) {
+          String place = "";
+          int j = pos.get(i) + 1;
+          while(j < words.length) {
+            if(i + 1 < pos.size() && pos.get(i + 1) <= j) {
+              break;
+            }
+            if(words[j].equals("pic") || words[j].equals("https") || words[j].equals("http")) {
+              break;
+            }
+            if(place.length() != 0) {
+              place += " ";
+            }
+            place += words[j];
+            j++;
+          }
+          if(place.length() != 0) {
+            candidatePlaces.add(place);
+          }
+        }
+        cat.addCandidatePlaces(candidatePlaces);
+      }
     }
   }
   
