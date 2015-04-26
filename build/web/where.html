@@ -1,138 +1,121 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Where is that?</title>
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-      #panel {
-        position: absolute;
-        top: 5px;
-        left: 50%;
-        margin-left: -180px;
-        z-index: 5;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999;
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style-where.css"/>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     
     <script>
-
-var geocoder;
-var map;
-var infowindow;
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e10; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
-}
-
-function work() {
-  infowindow = new google.maps.InfoWindow();
-  geocoder = new google.maps.Geocoder();
-  var latlng = new google.maps.LatLng(-6.8899, 107.6100);
-  var mapOptions = {
-    zoom: 16,
-    center: latlng
-  }
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-  
-  // taruh array of stringnya di sini
-  var candidatePlace = [
-    "pontianak pembunuhan kucing liar dan komodo",
-    "jalan asia afrika ditutup komodo",
-    "institut teknologi bandung"
-  ];
-  var exist = 0;
-
-  for(var it = 0; it < candidatePlace.length; it++) {
-    if(exist == 1) {
-      break;
-    }
-    var placeName = candidatePlace[it];
-    var places = placeName.split(" ");
-    var bef = "";
-    for(var i = 0; i < places.length; i++) {
-      if(i > 0) {
-        places[i] = places[i - 1] + " " + places[i];
+      function getParameterByName(name) {
+      // Mengambil parameter dari url berdasarkan parameter masukkan nama
+          name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+          var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+              results = regex.exec(location.search);
+          return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
       }
-    }
-    
-    for(var i = places.length - 1; i >= 0; --i) {
-      if(exist == 1) {
-        break;
-      }
-      sleep(250);
-      geocoder.geocode( { 'address': places[i] }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK && !exist) {
-          exist = 1;
-          map.setCenter(results[0].geometry.location);
-          for(var j = 0; j < results.length; j++) {
-            createMarker(results[j]);
+      var candidate = getParameterByName("candidate-place");
+
+      // Penggunaan GoogleMaps API
+      var geocoder;
+      var map;
+      var infowindow;
+
+      function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e10; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
           }
         }
-      });
-    }
-  }
-}
-
-function codeAddress() {
-  var address = document.getElementById('address').value;
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location);
-      for(var j = 0; j < results.length; j++) {
-        createMarker(results[j]);
       }
-    } else {
-      alert('Geocode was not successful for the following reason: ' + status);
-    }
-  });
-}
 
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
+      function work() {
+        infowindow = new google.maps.InfoWindow();
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(-6.8899, 107.6100);
+        var mapOptions = {
+          zoom: 16,
+          center: latlng
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
+        // taruh array of stringnya di sini
+        var addressValue = candidate.replace('[', '').replace(/"/g, '').replace(']', '');
+        document.getElementById('address').value = addressValue;
+        var candidatePlace = [candidate];
+        var exist = 0;
 
-google.maps.event.addDomListener(window, 'load', work);
+        for(var it = 0; it < candidatePlace.length; it++) {
+          if(exist == 1) {
+            break;
+          }
+          var placeName = candidatePlace[it];
+          var places = placeName.split(" ");
+          var bef = "";
+          for(var i = 0; i < places.length; i++) {
+            if(i > 0) {
+              places[i] = places[i - 1] + " " + places[i];
+            }
+          }
 
+          for(var i = places.length - 1; i >= 0; --i) {
+            if(exist == 1) {
+              break;
+            }
+            sleep(250);
+            geocoder.geocode( { 'address': places[i] }, function(results, status) {
+              if (status == google.maps.GeocoderStatus.OK && !exist) {
+                exist = 1;
+                map.setCenter(results[0].geometry.location);
+                for(var j = 0; j < results.length; j++) {
+                  createMarker(results[j]);
+                }
+              }
+            });
+          }
+        }
+      }
+
+      function codeAddress() {
+        var address = document.getElementById('address').value;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            for(var j = 0; j < results.length; j++) {
+              createMarker(results[j]);
+            }
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+
+      google.maps.event.addDomListener(window, 'load', work);
     </script>
   </head>
   <body>
     <div id="panel">
-<<<<<<< HEAD
       <input id="address" type="text">
-=======
-<<<<<<< HEAD
-      <input id="address" type="text">
-=======
-<<<<<<< HEAD
-      <input id="address" type="text">
-=======
-      <input id="address" type="textbox" value="">
->>>>>>> 30d26e110173c17fd33e8e30dd72620aa2a261bd
->>>>>>> c9273ca5bcde6d906ba942e37c20cc37854c8efe
->>>>>>> origin/master
       <input type="button" value="Find" onclick="codeAddress()">
     </div>
     <div id="map-canvas"></div>

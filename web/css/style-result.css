@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2015, 1:02:22 AM
+    Author     : User
+*/
+
+// Page Result
+html, body {
+}
+html, body {
+  background-image: url("../img/bg-index-about.png");  
+  background-size: fixed;
+  background-size: 1300px;
+}
+.container {
+  margin: 10px 200px;
+  background-color: #A7DBD8;
+}
+.result-text {
+  padding: 1px;
+}
+.result-category {
+  margin: 10px 100px 0;
+  padding-top: 20px;
+  padding-bottom: 5px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #A7DBD8;
+}
+.result-tweet-number {
+  padding-bottom: 10pt;
+}
+.result-username {
+  font-weight: bold;
+  padding: 10px;
+}
+.result-tweet {
+  text-align: justify;
+  padding: 5px 10px 20px;
+}

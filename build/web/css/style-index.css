@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2015, 1:25:32 AM
+    Author     : User
+*/
+// Page index
+.center {
+  text-align: center;
+}
+#logo-index {
+  text-align: center;
+}
+#home-button-start {
+  padding-bottom: 100px;
+}
+#start {
+  padding-right: 0;
+}
+.part-page {
+  height: 680px;
+  padding-top: 80px;
+  text-align: center;
+}
+#index-home {
+  background-image: url("../img/bg-index-home.png");
+  background-size: 1300px;
+}
+#index-help {
+  background-image: url("../img/bg-index-help.png");
+  background-size: 1300px;
+}
+#index-about {
+  background-image: url("../img/bg-index-about.png");
+  background-size: 1300px;
+}
+.arrow {
+  vertical-align: bottom;
+}
+.table {
+  display: inline;
+  margin: 0 auto 200px;
+}
+ul.horizontal-list {
+  list-style: none;
+}
+ul.horizontal-list li {
+  display: inline;
+  margin: 0 80px;
+}
+#about-us-carousel {
+  width: 500px;
+  margin: 0 auto;
+}
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}

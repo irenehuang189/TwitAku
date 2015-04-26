@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style-insert-keyword.css"/>
   </head>
   <body>
     <!-- Navigation Bar -->

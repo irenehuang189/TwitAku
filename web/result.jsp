@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap.css" type="text/css"/>
     <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style-result.css"/>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -86,18 +87,12 @@
 
     // Output berupa list of categories
     for(int i = 0; i < categories.size(); i++) {
-      ArrayList<Status> l = categories.get(i).getTweets();
-      for(int j = 0; j < l.size(); j++) {
-        
-      }
-    }
-    for(int i = 0; i < categories.size(); i++) {
       out.println(
         "<div class='container bg-info'>" + 
-          "<p class='result-category'>" + 
-              categories.get(i).getCategory() + "<p class='result-tweet-number'>" +
+          "<h2 class='result-category'>" + 
+              categories.get(i).getCategory() + "</h2><p class='result-tweet-number'>" +
               categories.get(i).getTweets().size() + " tweets found</p>" +
-          "</p>"
+          ""
       );
       
       ArrayList<Status> l = categories.get(i).getTweets();
@@ -106,25 +101,29 @@
         String statusUrl = userUrl + "/status/" + l.get(j).getId();
         String imageUrl = l.get(j).getUser().getProfileImageURL();
         String oriImageUrl = l.get(j).getUser().getOriginalProfileImageURL() ;
-        String placeUrl = "where.jsp?id-category=" + i + "&id-status=" + j + "&candidate-place=" + categories.get(i).getArrayCanPlaces(j);
+        String placeUrl = "where.html?id-category=" + i + "&id-status=" + j + "&candidate-place=" + categories.get(i).getArrayCanPlaces(j);
+        String placeLink = categories.get(i).getArrayCanPlaces(j);
+        if (!categories.get(i).getArrayCanPlaces(j).equals("")) {
+          placeLink = "Search: " + placeLink;
+        }
         out.println(
-                "<div class='result-username bg-primary'>" +
-                  "<a href='" + oriImageUrl + "' target='blank'>" +  
-                  "<img src='" + imageUrl + "'/>   " +
-                  "</a>" +
-                  "<a href='" + userUrl + "' target='blank'>" +  
-                    "@" + l.get(j).getUser().getScreenName() + 
-                  "</a>" +
-                  "<a href='" + placeUrl +"' target='blank' style='float: right'>" +
-                    "Place" +
-                  "</a>" +
-                "</div>" +
-                
-                "<a href='" + statusUrl + "' target='blank'>" +
-                  "<div class='result-tweet bg-primary' id='tweet-" + j + "'>" +
-                    l.get(j).getText() +
-                  "</div>" +
-                "</a>"
+          "<div class='result-username bg-primary'>" +
+            "<a href='" + oriImageUrl + "' target='blank'>" +  
+            "<img src='" + imageUrl + "'/>   " +
+            "</a>" +
+            "<a href='" + userUrl + "' target='blank'>" +  
+              "@" + l.get(j).getUser().getScreenName() + 
+            "</a>" +
+            "<a href='" + placeUrl +"' target='blank' style='float: right'>" +
+              placeLink +
+            "</a>" +
+          "</div>" +
+
+          "<a href='" + statusUrl + "' target='blank'>" +
+            "<div class='result-tweet bg-primary' id='tweet-" + j + "'>" +
+              l.get(j).getText()  +
+            "</div>" +
+          "</a>"
         );
       }
       out.println("</div>");

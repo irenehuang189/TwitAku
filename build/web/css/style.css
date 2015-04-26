@@ -7,113 +7,18 @@ and open the template in the editor.
     Created on : Apr 23, 2015, 6:49:43 AM
     Author     : User
 */
-
-// Page index
-.center {
-  text-align: center;
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0px;
+  padding: 0px
 }
-#logo-index {
-  text-align: center;
-}
-#home-button-start {
-  padding-bottom: 100px;
-}
-#start {
-  padding-right: 0;
-}
-.part-page {
-  height: 680px;
-  padding-top: 80px;
-  text-align: center;
-}
-#index-home {
-  background-image: url("../img/bg-index-home.png");
-  background-size: 1300px;
-}
-#index-help {
-  background-image: url("../img/bg-index-help.png");
-  background-size: 1300px;
-}
-#index-about {
-  background-image: url("../img/bg-index-about.png");
-  background-size: 1300px;
-}
-.arrow {
-  vertical-align: bottom;
-}
-.table {
-  display: inline;
-  margin: 0 auto 200px;
-}
-ul.horizontal-list {
-  list-style: none;
-}
-ul.horizontal-list li {
-  display: inline;
-  margin: 0 80px;
-}
-#about-us-carousel {
-  width: 500px;
-  margin: 0 auto;
-}
-.back-to-top {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-}
-
-// Page Topic
-html, body {
-  background-image: url("../img/bg-insert-keyword.png");
-  margin: 0;
-  padding: 1px;
-}
-.insert-keyword-form {
-  padding: 1px;
-}
-#topic-choice {
-  background-color: red;
-  margin: 100px 0 0 400px;
-}
-#category {
-  margin: 50px 400px;
-  background-color: yellow;
-}
-#select-algorithm {
-  width: 40%;
-}
-.reset {
-  min-height: 45px;
-  height: auto;
-}
-
-// Page Result
-.container {
-  background-color: rosybrown;
-}
-.result-text {
-  padding: 1px;
-}
-.result-category {
-  margin: 10px auto 0;
-  padding-top: 20px;
-  padding-bottom: 5px;
-  text-align: center;
-  font-family: 'Charcoal';
-  font-size: 16pt;
-  font-weight: bold;
-}
-.result-tweet-number {
-  padding-bottom: 10pt;
-}
-.result-username {
-  font-weight: bold;
-  padding: 10px;
-}
-.result-tweet {
-  text-align: justify;
-  padding: 5px 10px 20px;
-}
-.container {
-  margin: 10px 20%;
+#panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
 }
