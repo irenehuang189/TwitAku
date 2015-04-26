@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
   </head>
-  <body background="../img/bg-insert-keyword.png">
-    a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
+  <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">

@@ -7,9 +7,7 @@
 <%@page import="twit.Solver"%>
 <%@page import="twit.Category"%>
 <%@page import="twitter4j.*"%>
-
 <%@page import="java.util.ArrayList"%>
-<%--<%@page import="twit.TwitAku"%>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
   <head>
@@ -81,49 +79,74 @@
       } else {
         category = categoryTechnology;
       }
-    %>
-    Topic: <%= topic %><br>
-    Twitter search: <%= toSearch %><br>
-    Kumpulan keyword 1: <%= keywords[0] %><br>
-    Kumpulan keyword 2: <%= keywords[1] %><br>
-    Kumpulan keyword 3: <%= keywords[2] %><br>
-    Algoritma: <%= algorithm %><br>
     
-    <%
+    // Pencarian twitter
     Solver solver = new Solver(usingKmp, toSearch, keywords, category);
     ArrayList<Category> categories = solver.getOutput();
 
     // Output berupa list of categories
-    for (Category cat : categories) {
+    for(int i = 0; i < categories.size(); i++) {
       out.println(
-              "<div class='container bg-info'>" + 
-                "<p class='result-category'>" + 
-                    cat.getCategory() + "-<p class='result-tweet-number'>" +
-                    cat.getTweets().size() + " tweets found</p>" +
-                "</p>"
+        "<div class='container bg-info'>" + 
+          "<p class='result-category'>" + 
+              categories.get(i).getCategory() + "<p class='result-tweet-number'>" +
+              categories.get(i).getTweets().size() + " tweets found</p>" +
+          "</p>"
       );
       
-      ArrayList<Status> l = cat.getTweets();
-      for (Status status : l) {
-        String userUrl = "https://twitter.com/" + status.getUser().getScreenName();
-        String statusUrl = userUrl + "/status/" + status.getId();
+      ArrayList<Status> l = categories.get(i).getTweets();
+      for(int j = 0; j < l.size(); j++) {
+        String userUrl = "https://twitter.com/" + l.get(j).getUser().getScreenName();
+        String statusUrl = userUrl + "/status/" + l.get(j).getId();
+        String imageUrl = l.get(j).getUser().getProfileImageURL();
+        String oriImageUrl = l.get(j).getUser().getOriginalProfileImageURL() ;
         out.println(
-                "<div class='result-username'>" +
-                  "<a href='" + userUrl + "'>" +
-                    "@" + status.getUser().getScreenName() + 
+                "<div class='result-username bg-primary'>" +
+                  "<a href='" + oriImageUrl + "' target='blank'>" +  
+                  "<img src='" + imageUrl + "'/>   " +
+                  "</a>" +
+                  "<a href='" + userUrl + "' target='blank'>" +  
+                    "@" + l.get(j).getUser().getScreenName() + 
+                  "</a>" +
+                  "<a href='where.html?id-category=" + i + "&id-status=" + j + "'>" +
+                    "Place" +
                   "</a>" +
                 "</div>" +
                 
-                "<a href='" + statusUrl + "'>" +
-                  "<div class='result-tweet'>" +
-                    status.getText() +
+                "<a href='" + statusUrl + "' target='blank'>" +
+                  "<div class='result-tweet bg-primary' id='tweet-" + j + "'>" +
+                    l.get(j).getText() +
                   "</div>" +
                 "</a>"
         );
+        for(String place : categories.get(i).getCandidatePlaces(j)) {
+          out.println(place);
+        }
       }
       out.println("</div>");
     }
     %>
+    <%!
+    public static String getArrayString(ArrayList<Category> categories){
+      String result = "[";
+      for(int i = 0; i < categories.size(); i++) {
+        ArrayList<Status> l = categories.get(i).getTweets();
+        for(int j = 0; j < l.size(); j++) {
+          for(String place : categories.get(i).getCandidatePlaces(j)) {
+            result += "\"" + i + "-" + j + "-" + place + "\"";
+            if(i < categories.size() - 1) {
+              result += ", ";
+            }
+          }
+        }
+      }
+      result += "]";
+      return result;
+    }
+    %>
+    <script>
+     
+      </script>
     <!-- JavaScript -->
     <script src="js/jquery/jquery-1.11.2.js"></script>
     <script src="twitter-bootstrap/js/bootstrap.js"></script>

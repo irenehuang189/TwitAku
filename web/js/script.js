@@ -73,6 +73,13 @@ $(document).ready(function(){
   $("#insert-keyword-form-confirmation").click(function(){
     $("#insert-keyword-form").submit();
   });
+  
+  // Menampilkan tempat pada GoogleMaps API
+//  if(window.location.href.substr(0,10) == "where.html") {
+//    alert("tets");
+//  }
+  
+  
 });
 
 
