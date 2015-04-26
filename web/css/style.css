@@ -64,9 +64,12 @@ ul.horizontal-list li {
 
 // Page Topic
 html, body {
-  //background-image: url("../img/bg-insert-keyword.png");
-  background-color: green;
-  background-repeat: repeat-x;
+  background-image: url("../img/bg-insert-keyword.png");
+  margin: 0;
+  padding: 1px;
+}
+.insert-keyword-form {
+  padding: 1px;
 }
 #topic-choice {
   background-color: red;
@@ -85,11 +88,11 @@ html, body {
 }
 
 // Page Result
-/*.container {
+.container {
   background-color: rosybrown;
-}*/
+}
 .result-text {
-  //padding: 1px;
+  padding: 1px;
 }
 .result-category {
   background-color: royalblue;
@@ -106,9 +109,8 @@ html, body {
 }
 .result-username {
   background-color: yellow;
-  text-align: center;
   font-weight: bold;
-  padding: 5px 0;
+  padding: 10px;
 }
 .result-tweet {
   background-color: greenyellow;
