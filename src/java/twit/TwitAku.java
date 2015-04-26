@@ -18,16 +18,16 @@ public class TwitAku {
     // keywords dan knama kategori yang perlu ditambah
     // masukin ke sini.
     boolean usingKmp = false;
-    String toSearch = "at bandung";
+    String toSearch = "at kadalbonek";
     String[] keywords = {
-      "the avengers,captain america",
-      "asdf,        fdfd, dfsdf",
-      "percobaan"
+      "kadalbonek",
+      "bandung",
+      "home"
     };
     String[] kategori = {
-      "bola",
-      "motogp",
-      "table tennis",
+      "kategori 1",
+      "kategori 2",
+      "kategori 3",
       "unknown"
     };
     Solver solver = new Solver(usingKmp, toSearch, keywords, kategori);
@@ -44,9 +44,7 @@ public class TwitAku {
         System.out.println("@" + l.get(i).getUser().getScreenName() + " - " + l.get(i).getText());
         String url = "https://twitter.com/" + l.get(i).getUser().getScreenName() + "/status/" + l.get(i).getId();
         System.out.println(url);
-        for(String place : cat.getCandidatePlaces(i)) {
-          System.out.println(place);
-        }
+        System.out.println(cat.getArrayCanPlaces(i));
         System.out.println();
       }
       System.out.println("\n");

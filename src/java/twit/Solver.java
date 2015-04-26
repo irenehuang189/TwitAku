@@ -28,6 +28,16 @@ public class Solver {
   private ArrayList<Integer> index = new ArrayList<Integer>();
   private ArrayList<Category> categories = new ArrayList<Category>();
   
+  private String arrayToString(ArrayList<String> arr) {
+    String ret = "[";
+    for(int i = 0; i < arr.size(); i++) {
+      if(i != 0) ret += ", ";
+      ret += "\"" + arr.get(i) + "\"";
+    }
+    ret += "];";
+    return ret;
+  }
+  
   public Solver() {
     
   }
@@ -164,7 +174,7 @@ public class Solver {
             candidatePlaces.add(place);
           }
         }
-        cat.addCandidatePlaces(candidatePlaces);
+        cat.addArrayCanPlaces(arrayToString(candidatePlaces));
       }
     }
   }
