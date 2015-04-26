@@ -9,10 +9,6 @@ $(document).ready(function(){
   $("#start").click(function(){
     window.location.href = "insert-keyword.jsp";
   });
-  // Load page insert-keyword.html ketika button diklik
-  $("#choose-topic-button").click(function(){
-    //window.location.href = "insert-keyword.html";
-  });
   // Memunculkan form kategori sesuai topik yang dimasukkan
   $("#category").hide();
   $("#topic-choice input:radio").click(function(){
@@ -57,7 +53,26 @@ $(document).ready(function(){
     $("#keyword3-label").text("Keyword " + printTab[2]);
     $("#category").show();
   });
-  
+  // Reset form
+  $(".reset").click(function(){
+    $(this).closest('#insert-keyword-form').find("input[type=text], textarea").val("");
+  });
+  // Memunculkan alert box ketika tombol submit diklik
+  $("#choose-topic-button").click(function(){
+    var twitterSearch = $("#twitter-search").val();
+    var keyword1 = $("#keyword1").val();
+    var keyword2 = $("#keyword2").val();
+    var keyword3 = $("#keyword3").val();
+    var printText = "Word to be search is " + twitterSearch + "<br>" +
+    "The 1th keyword is " + keyword1 + "<br>" +
+    "The 2th keyword is " + keyword2 + "<br>" +
+    "The 3th keyword is " + keyword3 + "<br>";
+    $("#keyword-form-validation").html(printText);
+  });
+  // Submit form ketika telah dilakukan validasi data
+  $("#insert-keyword-form-confirmation").click(function(){
+    $("#insert-keyword-form").submit();
+  });
 });
 
 

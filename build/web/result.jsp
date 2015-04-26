@@ -11,15 +11,14 @@
 <%@page import="java.util.ArrayList"%>
 <%--<%@page import="twit.TwitAku"%>--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>TwitAku - Result</title>
     <!-- CSS -->
     <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap.css" type="text/css"/>
-    <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -63,9 +62,14 @@
         request.getParameter("keyword2"),
         request.getParameter("keyword3")
       };
-      //String algorithm = request.getParameter("select-algorithm");
+      String algorithm = request.getParameter("select-algorithm");
       // Penentuan algoritma
       boolean usingKmp = true; // Algoritma yang digunakan
+      if (algorithm.equals("KMP")) {
+        usingKmp = true;
+      } else {
+        usingKmp = false;
+      }
       // Penentuan kategori sesuai topik
       String[] category = new String[5];
       if (topic.equals("Policy and Law")) {
@@ -83,6 +87,7 @@
     Kumpulan keyword 1: <%= keywords[0] %><br>
     Kumpulan keyword 2: <%= keywords[1] %><br>
     Kumpulan keyword 3: <%= keywords[2] %><br>
+    Algoritma: <%= algorithm %><br>
     
     <%
     Solver solver = new Solver(usingKmp, toSearch, keywords, category);
@@ -91,11 +96,11 @@
     // Output berupa list of categories
     for (Category cat : categories) {
       out.println(
-              "<div class='result-text'>" + 
-                "<span class='result-category'>" + 
-                    cat.getCategory() + "<br>" +
-                    cat.getTweets().size() + " tweets found<br>" +
-                "</span>"
+              "<div class='container bg-info'>" + 
+                "<p class='result-category'>" + 
+                    cat.getCategory() + "-<p class='result-tweet-number'>" +
+                    cat.getTweets().size() + " tweets found</p>" +
+                "</p>"
       );
       
       ArrayList<Status> l = cat.getTweets();
@@ -103,11 +108,12 @@
         String userUrl = "https://twitter.com/" + status.getUser().getScreenName();
         String statusUrl = userUrl + "/status/" + status.getId();
         out.println(
-                "<a href='" + userUrl + "'>" +
-                  "<div class='result-username'>" +
+                "<div class='result-username'>" +
+                  "<a href='" + userUrl + "'>" +
                     "@" + status.getUser().getScreenName() + 
-                  "</div>" +
-                "</a>" +
+                  "</a>" +
+                "</div>" +
+                
                 "<a href='" + statusUrl + "'>" +
                   "<div class='result-tweet'>" +
                     status.getText() +

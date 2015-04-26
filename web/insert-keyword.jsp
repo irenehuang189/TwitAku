@@ -5,17 +5,18 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>TwitAku - Insert Keyword</title>
     <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
     <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap.css" type="text/css"/>
-    <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="twitter-bootstrap/css/bootstrap-theme.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
   </head>
-  <body>
+  <body background="../img/bg-insert-keyword.png">
+    a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
@@ -43,14 +44,10 @@
         </ul>
       </div>
     </nav>
-    
-<!--<div id="choose-topic-button">
-      
-    </div>-->
 
     <!-- Pilihan topik, kategori, dan keyword -->
     <div class="insert-keyword-form">
-      <form autocomplete="on" action="result.jsp">
+      <form id="insert-keyword-form" autocomplete="on" action="result.jsp">
         <!-- Topik -->
         <div id="topic-choice">
           <label id="topic-choice-label" for="topic-choice">
@@ -120,9 +117,30 @@
           <p class="help-block">
             Keyword are case-sensitive, seperated by ", ".
           </p>
-          <button class="btn btn-default" id="choose-topic-button" type="submit">
+          <button class="btn btn-default" id="choose-topic-button" type="submit button" data-toggle="modal" data-target=".bs-example-modal-sm">
             <img src="img/button-search.png">
           </button>
+          <button class="btn btn-default reset" type="button">
+            Reset
+          </button>
+          
+          <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labeledby="insertKeywordForm" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="exampleModalLabel">Confirmation</h4>
+                </div>
+                <div class="modal-body" id="keyword-form-validation">
+                  <!-- Diisi melalui JavaScript -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id="insert-keyword-form-confirmation">Confirm</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
     </div>

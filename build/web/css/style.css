@@ -13,7 +13,6 @@ and open the template in the editor.
   text-align: center;
 }
 #logo-index {
-  /*background-color: yellow;*/
   text-align: center;
 }
 #home-button-start {
@@ -21,7 +20,6 @@ and open the template in the editor.
 }
 #start {
   padding-right: 0;
-  padding-bottom: 0;
 }
 .part-page {
   height: 680px;
@@ -29,13 +27,16 @@ and open the template in the editor.
   text-align: center;
 }
 #index-home {
-  background-image: url("../img/bg-index-home.jpg");
+  background-image: url("../img/bg-index-home.png");
+  background-size: 1300px;
 }
 #index-help {
-  background-image: url("../img/bg-index-help.jpg");
+  background-image: url("../img/bg-index-help.png");
+  background-size: 1300px;
 }
 #index-about {
-  background-image: url("../img/bg-index-about.jpg");
+  background-image: url("../img/bg-index-about.png");
+  background-size: 1300px;
 }
 .arrow {
   vertical-align: bottom;
@@ -62,38 +63,58 @@ ul.horizontal-list li {
 }
 
 // Page Topic
-.insert-keyword-form {
-  display: inline-block;
+html, body {
+  //background-image: url("../img/bg-insert-keyword.png");
+  background-color: green;
+  background-repeat: repeat-x;
 }
 #topic-choice {
-  margin: 100px 400px 0;
+  background-color: red;
+  margin: 100px 0 0 400px;
 }
 #category {
   margin: 50px 400px;
+  background-color: yellow;
+}
+#select-algorithm {
+  width: 40%;
+}
+.reset {
+  min-height: 45px;
+  height: auto;
 }
 
 // Page Result
+/*.container {
+  background-color: rosybrown;
+}*/
 .result-text {
-  overflow: auto;
-  padding: 30px 500px;
-  background-color: yellow;
+  //padding: 1px;
 }
 .result-category {
   background-color: royalblue;
+  margin: 10px auto 0;
+  padding-top: 20px;
+  padding-bottom: 5px;
   text-align: center;
-  text-decoration: blink;
+  font-family: 'Charcoal';
+  font-size: 16pt;
+  font-weight: bold;
 }
-.result-content {
-  background-color: orange;
+.result-tweet-number {
+  padding-bottom: 10pt;
 }
 .result-username {
   background-color: yellow;
-  text-shadow: 10;
+  text-align: center;
+  font-weight: bold;
+  padding: 5px 0;
 }
 .result-tweet {
   background-color: greenyellow;
   text-align: justify;
+  padding: 5px 10px 20px;
 }
-#select-algorithm {
-  width: 40%;
+.container {
+  margin: 10px 20%;
 }
