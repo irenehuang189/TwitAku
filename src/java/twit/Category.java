@@ -14,21 +14,32 @@ import twitter4j.*;
 public class Category {
   private ArrayList<String> keys;
   private String category;
+  
+  // tweets dengan indeks ke-i paralel dengan
+  // candidatePlaces dengan indeks ke-i
+  
   private ArrayList<Status> tweets;
+  // setiap tweet punya array of string buat candidate place
+  // karena ada array of tweet, jadinya array of array of string
+  private ArrayList<ArrayList<String>> candidatePlaces;
   
   public Category() {
     keys = new ArrayList<String>();
     category = "lala";
     tweets = new ArrayList<Status>();
+    candidatePlaces = new ArrayList<ArrayList<String>>();
   }
   public Category(String cat) {
     keys = new ArrayList<String>();
     category = cat;
     tweets = new ArrayList<Status>();
+    candidatePlaces = new ArrayList<ArrayList<String>>();
   }
   public Category(String cat, ArrayList<String> keywords) {
     category = cat;
     keys = keywords;
+    tweets = new ArrayList<Status>();
+    candidatePlaces = new ArrayList<ArrayList<String>>();
   }
   
   public String getCategory() {
@@ -57,5 +68,15 @@ public class Category {
   
   public void addTweets(Status e) {
     tweets.add(e);
+  }
+  
+  public void addCandidatePlaces(ArrayList<String> cp) {
+    candidatePlaces.add(cp);
+  }
+  public ArrayList<String> getCandidatePlaces(int i) {
+    return candidatePlaces.get(i);
+  }
+  public ArrayList<ArrayList<String>> getAllCandidatePlaces() {
+    return candidatePlaces;
   }
 }

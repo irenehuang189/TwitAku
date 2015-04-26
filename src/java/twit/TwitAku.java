@@ -18,11 +18,11 @@ public class TwitAku {
     // keywords dan knama kategori yang perlu ditambah
     // masukin ke sini.
     boolean usingKmp = false;
-    String toSearch = "#hiburan";
+    String toSearch = "at bandung";
     String[] keywords = {
       "the avengers,captain america",
-      "asdf,,,,,,        fdfd, dfsdf",
-      "tai tai tai"
+      "asdf,        fdfd, dfsdf",
+      "percobaan"
     };
     String[] kategori = {
       "bola",
@@ -40,10 +40,14 @@ public class TwitAku {
         System.out.println(keyword);
       }
       ArrayList<Status> l = cat.getTweets();
-      for (Status status : l) {
-        System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
-        String url = "https://twitter.com/" + status.getUser().getScreenName() + "/status/" + status.getId();
+      for(int i = 0; i < l.size(); i++) {
+        System.out.println("@" + l.get(i).getUser().getScreenName() + " - " + l.get(i).getText());
+        String url = "https://twitter.com/" + l.get(i).getUser().getScreenName() + "/status/" + l.get(i).getId();
         System.out.println(url);
+        for(String place : cat.getCandidatePlaces(i)) {
+          System.out.println(place);
+        }
+        System.out.println();
       }
       System.out.println("\n");
     }
