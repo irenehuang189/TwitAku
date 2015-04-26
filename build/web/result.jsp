@@ -87,11 +87,19 @@
     // Output berupa list of categories
     for(int i = 0; i < categories.size(); i++) {
       out.println(
+<<<<<<< HEAD
         "<div class='container bg-info'>" + 
           "<p class='result-category'>" + 
               categories.get(i).getCategory() + "<p class='result-tweet-number'>" +
               categories.get(i).getTweets().size() + " tweets found</p>" +
           "</p>"
+=======
+              "<div class='container bg-info'>" + 
+                "<p class='result-category'>" + 
+                    categories.get(i).getCategory() + "-<p class='result-tweet-number'>" +
+                    categories.get(i).getTweets().size() + " tweets found</p>" +
+                "</p>"
+>>>>>>> origin/master
       );
       
       ArrayList<Status> l = categories.get(i).getTweets();
@@ -101,20 +109,31 @@
         String imageUrl = l.get(j).getUser().getProfileImageURL();
         String oriImageUrl = l.get(j).getUser().getOriginalProfileImageURL() ;
         out.println(
+<<<<<<< HEAD
                 "<div class='result-username bg-primary'>" +
+=======
+                "<div class='result-username'>" +
+>>>>>>> origin/master
                   "<a href='" + oriImageUrl + "' target='blank'>" +  
                   "<img src='" + imageUrl + "'/>   " +
                   "</a>" +
                   "<a href='" + userUrl + "' target='blank'>" +  
                     "@" + l.get(j).getUser().getScreenName() + 
+<<<<<<< HEAD
                   "</a>" +
                   "<a href='where.html?id-category=" + i + "&id-status=" + j + "'>" +
                     "Place" +
+=======
+>>>>>>> origin/master
                   "</a>" +
                 "</div>" +
                 
                 "<a href='" + statusUrl + "' target='blank'>" +
+<<<<<<< HEAD
                   "<div class='result-tweet bg-primary' id='tweet-" + j + "'>" +
+=======
+                  "<div class='result-tweet' id='tweet-" + j + "'>" +
+>>>>>>> origin/master
                     l.get(j).getText() +
                   "</div>" +
                 "</a>"
@@ -127,6 +146,7 @@
     }
     %>
     <%!
+<<<<<<< HEAD
     public static String getArrayString(ArrayList<Category> categories){
       String result = "[";
       for(int i = 0; i < categories.size(); i++) {
@@ -143,6 +163,26 @@
       result += "]";
       return result;
     }
+=======
+//    public static String getArrayString(ArrayList<Category> categories){
+//      String result = "[";
+//      for(int i = 0; i < categories.size(); i++) {
+//        ArrayList<Status> l = categories.get(i).getTweets();
+//        for(int j = 0; j < l.size(); j++) {
+//          for(String place : categories.get(i).getCandidatePlaces(j)) {
+//            result += "\"" + i + "-" + j + "-" + place + "\"";
+//            if(i < categories.size() - 1) {
+//              result += ", ";
+//            }
+//          }
+//        }
+//      }
+//      result += "]";
+//out.println("test place:" + result);
+//      return result;
+//    }
+  
+>>>>>>> origin/master
     %>
     <script>
      
@@ -150,6 +190,7 @@
     <!-- JavaScript -->
     <script src="js/jquery/jquery-1.11.2.js"></script>
     <script src="twitter-bootstrap/js/bootstrap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

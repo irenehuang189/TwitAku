@@ -28,6 +28,16 @@ public class Solver {
   private ArrayList<Integer> index = new ArrayList<Integer>();
   private ArrayList<Category> categories = new ArrayList<Category>();
   
+  private String arrayToString(ArrayList<String> arr) {
+    String ret = "[";
+    for(int i = 0; i < arr.size(); i++) {
+      if(i != 0) ret += ", ";
+      ret += "\"" + arr.get(i) + "\"";
+    }
+    ret += "];";
+    return ret;
+  }
+  
   public Solver() {
     
   }
@@ -83,7 +93,7 @@ public class Solver {
    */
   private void categorize() {
     Algorithm algo = new Algorithm();
-    for (int k = 0; k < tweetCount; k++) {
+    for (int k = 0; k < tweets.size(); k++) {
       boolean found = false;
       for (int i = 0; i < categories.size()-1; i++) {
         if(found) break;
@@ -117,7 +127,7 @@ public class Solver {
    * Memasukkan tweet ke dalam kategorinya
    */
   private void entry() {
-    for (int i = 0; i < tweetCount; i++) {
+    for (int i = 0; i < tweets.size(); i++) {
       int indexCategory = tweetCategory.get(i);
       if(indexCategory == -1) {
         indexCategory = categories.size() - 1;
@@ -164,7 +174,7 @@ public class Solver {
             candidatePlaces.add(place);
           }
         }
-        cat.addCandidatePlaces(candidatePlaces);
+        cat.addArrayCanPlaces(arrayToString(candidatePlaces));
       }
     }
   }

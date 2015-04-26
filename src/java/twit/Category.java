@@ -19,27 +19,25 @@ public class Category {
   // candidatePlaces dengan indeks ke-i
   
   private ArrayList<Status> tweets;
-  // setiap tweet punya array of string buat candidate place
-  // karena ada array of tweet, jadinya array of array of string
-  private ArrayList<ArrayList<String>> candidatePlaces;
+  private ArrayList<String> arrayCanPlaces;
   
   public Category() {
     keys = new ArrayList<String>();
     category = "lala";
     tweets = new ArrayList<Status>();
-    candidatePlaces = new ArrayList<ArrayList<String>>();
+    arrayCanPlaces = new ArrayList<String>();
   }
   public Category(String cat) {
     keys = new ArrayList<String>();
     category = cat;
     tweets = new ArrayList<Status>();
-    candidatePlaces = new ArrayList<ArrayList<String>>();
+    arrayCanPlaces = new ArrayList<String>();
   }
   public Category(String cat, ArrayList<String> keywords) {
     category = cat;
     keys = keywords;
     tweets = new ArrayList<Status>();
-    candidatePlaces = new ArrayList<ArrayList<String>>();
+    arrayCanPlaces = new ArrayList<String>();
   }
   
   public String getCategory() {
@@ -70,13 +68,13 @@ public class Category {
     tweets.add(e);
   }
   
-  public void addCandidatePlaces(ArrayList<String> cp) {
-    candidatePlaces.add(cp);
+  public void addArrayCanPlaces(String str) {
+    arrayCanPlaces.add(str);
   }
-  public ArrayList<String> getCandidatePlaces(int i) {
-    return candidatePlaces.get(i);
+  public String getArrayCanPlaces(int i) {
+    return arrayCanPlaces.get(i);
   }
-  public ArrayList<ArrayList<String>> getAllCandidatePlaces() {
-    return candidatePlaces;
+  public ArrayList<String> getAllArrayCanPlaces() {
+    return arrayCanPlaces;
   }
 }

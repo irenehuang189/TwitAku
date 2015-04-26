@@ -117,8 +117,8 @@ public class Algorithm {
           if(exactCheck(text, i + 1, pattern.length())) {
             return i + 1;
           }
-          i += pattern.length();
-          j += pattern.length();
+          i += pattern.length() + 1;
+          j = pattern.length() - 1;
         }
       } else {
         int c = text.charAt(i);
