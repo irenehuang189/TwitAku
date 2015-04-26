@@ -10,7 +10,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
+    <title>Where is that?</title>
     <style>
       html, body, #map-canvas {
         height: 100%;
@@ -31,7 +31,16 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places"></script>
     
     <script>
+function getParameterByName(name) {
+// Mengambil parameter dari url berdasarkan parameter masukkan nama
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+var candidate = getParameterByName("candidate-place");
 
+// Penggunaan GoogleMaps API
 var geocoder;
 var map;
 var infowindow;
@@ -52,15 +61,13 @@ function work() {
   var mapOptions = {
     zoom: 16,
     center: latlng
-  }
+  };
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   
   // taruh array of stringnya di sini
-  var candidatePlace = [
-    "pontianak pembunuhan kucing liar dan komodo",
-    "jalan asia afrika ditutup komodo",
-    "institut teknologi bandung"
-  ];
+  var addressValue = candidate.replace('[', '').replace(/"/g, '').replace(']', '');
+  document.getElementById('address').value = addressValue;
+  var candidatePlace = [candidate];
   var exist = 0;
 
   for(var it = 0; it < candidatePlace.length; it++) {
@@ -127,7 +134,11 @@ google.maps.event.addDomListener(window, 'load', work);
   </head>
   <body>
     <%
-      session.getAttribute("");
+      String[] categoriesTab = request.getParameterValues("cat");
+      
+//for (int i=0; i<categoriesTab.length; i++) {
+//out.println(categoriesTab[i]);
+//}
     %>
     <div id="panel">
       <input id="address" type="text">

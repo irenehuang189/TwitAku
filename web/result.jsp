@@ -86,6 +86,12 @@
 
     // Output berupa list of categories
     for(int i = 0; i < categories.size(); i++) {
+      ArrayList<Status> l = categories.get(i).getTweets();
+      for(int j = 0; j < l.size(); j++) {
+        
+      }
+    }
+    for(int i = 0; i < categories.size(); i++) {
       out.println(
         "<div class='container bg-info'>" + 
           "<p class='result-category'>" + 
@@ -100,6 +106,7 @@
         String statusUrl = userUrl + "/status/" + l.get(j).getId();
         String imageUrl = l.get(j).getUser().getProfileImageURL();
         String oriImageUrl = l.get(j).getUser().getOriginalProfileImageURL() ;
+        String placeUrl = "where.jsp?id-category=" + i + "&id-status=" + j + "&candidate-place=" + categories.get(i).getArrayCanPlaces(j);
         out.println(
                 "<div class='result-username bg-primary'>" +
                   "<a href='" + oriImageUrl + "' target='blank'>" +  
@@ -108,7 +115,7 @@
                   "<a href='" + userUrl + "' target='blank'>" +  
                     "@" + l.get(j).getUser().getScreenName() + 
                   "</a>" +
-                  "<a href='where.html?id-category=" + i + "&id-status=" + j + "'>" +
+                  "<a href='" + placeUrl +"' target='blank' style='float: right'>" +
                     "Place" +
                   "</a>" +
                 "</div>" +
@@ -119,28 +126,19 @@
                   "</div>" +
                 "</a>"
         );
-//out.println(categories.get(i).getArrayCanPlaces(j));
       }
       out.println("</div>");
     }
     %>
-    <%!
-//    public static String getArrayString(ArrayList<Category> categories){
-//      String result = "[";
-//      for(int i = 0; i < categories.size(); i++) {
-//        ArrayList<Status> l = categories.get(i).getTweets();
-//        for(int j = 0; j < l.size(); j++) {
-//          for(String place : categories.getArrayCanPlaces(j)) {
-//            result += "\"" + i + "-" + j + "-" + place + "\"";
-//            if(i < categories.size() - 1) {
-//              result += ", ";
-//            }
-//          }
-//        }
-//      }
-//      result += "]";
-//      return result;
-//    }
+    <%
+      for(int i = 0; i < categories.size(); i++) {
+        ArrayList<Status> l = categories.get(i).getTweets();
+        for(int j = 0; j < l.size(); j++) {
+    %>
+    <input type="hidden" name="cat" value='<%= categories.get(i).getArrayCanPlaces(j) %>'>
+    <%
+      
+      }}
     %>
     <!-- JavaScript -->
     <script src="js/jquery/jquery-1.11.2.js"></script>
