@@ -119,9 +119,7 @@
                   "</div>" +
                 "</a>"
         );
-//        for(String place : categories.get(i).getCandidatePlaces(j)) {
-//          out.println(place);
-//        }
+//out.println(categories.get(i).getArrayCanPlaces(j));
       }
       out.println("</div>");
     }
@@ -132,7 +130,7 @@
 //      for(int i = 0; i < categories.size(); i++) {
 //        ArrayList<Status> l = categories.get(i).getTweets();
 //        for(int j = 0; j < l.size(); j++) {
-//          for(String place : categories.get(i).getCandidatePlaces(j)) {
+//          for(String place : categories.getArrayCanPlaces(j)) {
 //            result += "\"" + i + "-" + j + "-" + place + "\"";
 //            if(i < categories.size() - 1) {
 //              result += ", ";
@@ -144,9 +142,6 @@
 //      return result;
 //    }
     %>
-    <script>
-     
-      </script>
     <!-- JavaScript -->
     <script src="js/jquery/jquery-1.11.2.js"></script>
     <script src="twitter-bootstrap/js/bootstrap.js"></script>

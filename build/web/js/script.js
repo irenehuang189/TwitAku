@@ -75,9 +75,13 @@ $(document).ready(function(){
   });
   
   // Menampilkan tempat pada GoogleMaps API
-//  if(window.location.href.substr(0,10) == "where.html") {
+//  if(window.location.href.substr(0,10) === "where.html") {
 //    alert("tets");
 //  }
+//var arrayString = $("#h1").val().split(",");
+//for(i =0; i < arrayString.size() ;i++) {
+//   tempString += a[i] + "    "; //Used space to construct a string
+//}
   
   
 });
