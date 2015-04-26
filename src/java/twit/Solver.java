@@ -83,7 +83,7 @@ public class Solver {
    */
   private void categorize() {
     Algorithm algo = new Algorithm();
-    for (int k = 0; k < tweetCount; k++) {
+    for (int k = 0; k < tweets.size(); k++) {
       boolean found = false;
       for (int i = 0; i < categories.size()-1; i++) {
         if(found) break;
@@ -117,7 +117,7 @@ public class Solver {
    * Memasukkan tweet ke dalam kategorinya
    */
   private void entry() {
-    for (int i = 0; i < tweetCount; i++) {
+    for (int i = 0; i < tweets.size(); i++) {
       int indexCategory = tweetCategory.get(i);
       if(indexCategory == -1) {
         indexCategory = categories.size() - 1;
