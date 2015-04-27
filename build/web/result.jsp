@@ -21,7 +21,7 @@
   </head>
   <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-default"  role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top"  role="navigation">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li>
@@ -88,7 +88,7 @@
     // Output berupa list of categories
     for(int i = 0; i < categories.size(); i++) {
       out.println(
-        "<div class='container bg-info'>" + 
+        "<div class='container'>" + 
           "<h2 class='result-category'>" + 
               categories.get(i).getCategory() + "</h2><p class='result-tweet-number'>" +
               categories.get(i).getTweets().size() + " tweets found</p>" +
@@ -107,38 +107,41 @@
           placeLink = "Search: " + placeLink;
         }
         out.println(
-          "<div class='result-username bg-primary'>" +
+          "<div class='result-username'>" +
             "<a href='" + oriImageUrl + "' target='blank'>" +  
             "<img src='" + imageUrl + "'/>   " +
             "</a>" +
-            "<a href='" + userUrl + "' target='blank'>" +  
+            "<a href='" + userUrl + "' target='_blank'>" +  
               "@" + l.get(j).getUser().getScreenName() + 
             "</a>" +
-            "<a href='" + placeUrl +"' target='blank' style='float: right'>" +
-              placeLink +
-            "</a>" +
+            
           "</div>" +
 
-          "<a href='" + statusUrl + "' target='blank'>" +
-            "<div class='result-tweet bg-primary' id='tweet-" + j + "'>" +
+          "<a href='" + statusUrl + "' target='_blank'>" +
+            "<div class='result-tweet' id='tweet-" + j + "'>" +
               l.get(j).getText()  +
             "</div>" +
-          "</a>"
+          "</a>" +
+          "<div class='result-place'>" +
+            "<a href='" + placeUrl +"' target='_blank' style='color:#D22042'>" +
+              placeLink +
+            "</a>" +
+          "</div>"
         );
+      }
+      if (l.size()==0) {
+        out.println("<br>");
       }
       out.println("</div>");
     }
     %>
-    <%
-      for(int i = 0; i < categories.size(); i++) {
-        ArrayList<Status> l = categories.get(i).getTweets();
-        for(int j = 0; j < l.size(); j++) {
-    %>
-    <input type="hidden" name="cat" value='<%= categories.get(i).getArrayCanPlaces(j) %>'>
-    <%
-      
-      }}
-    %>
+    <img src="img/bird-blue.png" alt="Help" data-toggle="tooltip" data-placement="top" title="Click on the username to see the user Twitter page" style="width: 100px; position: fixed; left: 160px; top: 300px;">
+    <img src="img/bird-yellow.png" alt="Help" data-toggle="tooltip" data-placement="top" title="Click on the place link to see the link in Google Maps!" style="width: 100px; position: fixed; right: 160px; top: 150px;">
+    <div class="back-to-top">
+      <a href="#index-home">
+        <img src="img/icon-home-index.png" alt="Home">
+      </a>
+    </div>
     <!-- JavaScript -->
     <script src="js/jquery/jquery-1.11.2.js"></script>
     <script src="twitter-bootstrap/js/bootstrap.js"></script>

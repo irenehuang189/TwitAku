@@ -15,24 +15,32 @@ html, body {
   background-image: url("../img/bg-insert-keyword.png");  
   background-attachment: fixed;
   background-size: 1300px;
+  color: #159BD7;
 }
 .insert-keyword-form {
   padding: 1px;
 }
 #topic-choice {
-  margin: 100px 400px;
+  margin: 100px 400px 30px;
   padding: 20px;
-  background-color: #A7DBD8;
+  background-color: whitesmoke;
+  border-radius: 20px;
 }
 #category {
-  margin: 50px 400px;
+  margin: 70px 400px;
   padding: 20px;
-  background-color: #A7DBD8;
+  padding-bottom: 80px;
+  background-color: whitesmoke;
+  border-radius: 20px;
 }
 #select-algorithm {
-  width: 40%;
+  width: 50%;
+}
+#choose-topic-button {
+  float: right;
 }
 .reset {
-  min-height: 45px;
+  float: right;
+  min-height: 46px;
   height: auto;
 }

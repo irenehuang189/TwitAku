@@ -22,7 +22,7 @@ and open the template in the editor.
 }
 .part-page {
   height: 680px;
-  padding-top: 80px;
+  padding-top: 50px;
   text-align: center;
 }
 #index-home {
@@ -52,8 +52,12 @@ ul.horizontal-list li {
   margin: 0 80px;
 }
 #about-us-carousel {
-  width: 500px;
-  margin: 0 auto;
+  width: 470px;
+  margin: 30px auto;
+}
+#help-carousel {
+  width: 700px;
+  margin: 30px auto;
 }
 .back-to-top {
   position: fixed;

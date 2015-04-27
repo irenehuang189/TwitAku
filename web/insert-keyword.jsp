@@ -47,12 +47,13 @@
 
     <!-- Pilihan topik, kategori, dan keyword -->
     <div class="insert-keyword-form">
+      <img src="img/bird-yellow.png" alt="Help" data-toggle="tooltip" data-placement="top" title="Choose the topic" style="width: 100px; position: absolute; left: 270px; top: 200px;">
       <form id="insert-keyword-form" autocomplete="on" action="result.jsp">
         <!-- Topik -->
         <div id="topic-choice">
-          <label id="topic-choice-label" for="topic-choice">
+          <h2 id="topic-choice-label">
             Choose your topic
-          </label>
+          </h2>
           <div class="radio">
           <label>
             <input id="policy-and-law" name="topic-choice" type="radio" value="Policy and Law" checked>Policy and Law
@@ -77,9 +78,10 @@
         
         <!-- Kategori dan keyword -->
         <div id="category">
-          <h1 id="topic">
+          <img src="img/bird-red.png" alt="Help" data-toggle="tooltip" data-placement="top" title="Fill the form with your keyword!" style="width: 100px; position: absolute; right: 430px; top: 400px;">
+          <h2 id="topic">
             <!-- Diisi melalui JavaScript -->
-          </h1>
+          </h2>
           <div class="form-group">
             <label id="twitter-search-label" for="twitter-search">
               Twitter Search

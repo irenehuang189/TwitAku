@@ -13,32 +13,43 @@ html, body {
 }
 html, body {
   background-image: url("../img/bg-index-about.png");  
-  background-size: fixed;
+  background-attachment: fixed;
   background-size: 1300px;
+  color: #159BD7;
 }
 .container {
-  margin: 10px 200px;
-  background-color: #A7DBD8;
+  margin: 30px 300px;
+  padding: 0;
+  background-color: whitesmoke;
+  border-radius: 25px;
 }
-.result-text {
-  padding: 1px;
+.container:first-of-type {
+  margin: 100px 300px 30px;
 }
 .result-category {
-  margin: 10px 100px 0;
+  margin: 0;
   padding-top: 20px;
-  padding-bottom: 5px;
   text-align: center;
   font-weight: bold;
-  background-color: #A7DBD8;
 }
 .result-tweet-number {
+  margin: 0;
   padding-bottom: 10pt;
+  text-align: center;
+  font-size: 10pt;
+  border-bottom: 3px solid;
 }
 .result-username {
   font-weight: bold;
-  padding: 10px;
+  margin: 20px 40px 5px;
 }
 .result-tweet {
   text-align: justify;
-  padding: 5px 10px 20px;
+  margin: 0 40px 5px;
+}
+.result-place {
+  margin: 0 40px 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid;
+  text-align: right;
 }

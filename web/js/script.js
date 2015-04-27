@@ -5,6 +5,12 @@
  */
 
 $(document).ready(function(){
+  // Menyalakan fungsi tooltip bootstrap
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip({
+        placement : 'top'
+    });
+  });
   // Load page choose-topic.html ketika button diklik
   $("#start").click(function(){
     window.location.href = "insert-keyword.jsp";
@@ -63,27 +69,18 @@ $(document).ready(function(){
     var keyword1 = $("#keyword1").val();
     var keyword2 = $("#keyword2").val();
     var keyword3 = $("#keyword3").val();
-    var printText = "Word to be search is " + twitterSearch + "<br>" +
-    "The 1th keyword is " + keyword1 + "<br>" +
-    "The 2th keyword is " + keyword2 + "<br>" +
-    "The 3th keyword is " + keyword3 + "<br>";
+    var algorithm = $("#select-algorithm").val();
+    var printText = "Word to be search is <b>" + twitterSearch + "</b>.<br>" +
+    "The 1th keyword is <b>" + keyword1 + "</b>.<br>" +
+    "The 2th keyword is <b>" + keyword2 + "</b>.<br>" +
+    "The 3th keyword is <b>" + keyword3 + "</b>.<br>" +
+    "Use <b>" + algorithm + "seacrhing algorithm</b>.<br>";
     $("#keyword-form-validation").html(printText);
   });
   // Submit form ketika telah dilakukan validasi data
   $("#insert-keyword-form-confirmation").click(function(){
     $("#insert-keyword-form").submit();
   });
-  
-  // Menampilkan tempat pada GoogleMaps API
-//  if(window.location.href.substr(0,10) === "where.html") {
-//    alert("tets");
-//  }
-//var arrayString = $("#h1").val().split(",");
-//for(i =0; i < arrayString.size() ;i++) {
-//   tempString += a[i] + "    "; //Used space to construct a string
-//}
-  
-  
 });
 
 
